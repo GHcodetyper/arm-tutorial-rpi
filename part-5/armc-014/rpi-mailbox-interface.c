@@ -93,10 +93,21 @@ void RPI_PropertyAddTag( rpi_mailbox_tag_t tag, ... )
             break;
 
         case TAG_ALLOCATE_BUFFER:
+        case TAG_GET_MAX_CLOCK_RATE:
+        case TAG_GET_MIN_CLOCK_RATE:
+        case TAG_GET_CLOCK_RATE:
             pt[pt_index++] = 8;
             pt[pt_index++] = 0; /* Request */
             pt[pt_index++] = va_arg( vl, int );
-            pt_index += 1;
+            pt[pt_index++] = 0;
+            break;
+
+        case TAG_SET_CLOCK_RATE:
+            pt[pt_index++] = 12;
+            pt[pt_index++] = 0; /* Request */
+            pt[pt_index++] = va_arg( vl, int ); /* Clock ID */
+            pt[pt_index++] = va_arg( vl, int ); /* Rate (in Hz) */
+            pt[pt_index++] = va_arg( vl, int ); /* Skip turbo setting if == 1 */
             break;
 
         case TAG_GET_PHYSICAL_SIZE:
@@ -124,7 +135,6 @@ void RPI_PropertyAddTag( rpi_mailbox_tag_t tag, ... )
                 pt_index += 2;
             }
             break;
-
 
         case TAG_GET_ALPHA_MODE:
         case TAG_SET_ALPHA_MODE:

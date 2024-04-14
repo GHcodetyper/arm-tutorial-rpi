@@ -1,42 +1,71 @@
 # Raspberry-Pi Bare Metal Tutorial
 
+![Build Status](https://github.com/BrianSidebotham/arm-tutorial-rpi/workflows/Build/badge.svg)
+![Markdown Status](https://github.com/BrianSidebotham/arm-tutorial-rpi/workflows/Markdown%20Lint/badge.svg)
+
 This repository contains the code for the Raspberry-Pi bare-metal programming
 in C series. The home of the tutorial and all of the articles relating to the
 code is at
-[valvers.com](http://www.valvers.com/open-software/raspberry-pi/step01-bare-metal-programming-in-cpt1/)
+[valvers.com](https://www.valvers.com/open-software/raspberry-pi/bare-metal-programming-in-c)
+and [github](https://github.com/BrianSidebotham/arm-tutorial-rpi)
 
-You can build on linux, windows, or MAC - all you need is the
-[https://launchpad.net/gcc-arm-embedded](arm-none-eabi toolchain).
+The tutorial supports all RPi models, except:
 
-For all platforms, you can get the required toolchain used in this tutorial
-from the [GCC-ARM-embedded](https://launchpad.net/gcc-arm-embedded) project - I
-recommend getting the 4.7 toolchain because I've had problems with the 4.9
-toolchain.
+- rpi3 (rpi3B+ is supported) because the ACT LED is not connected to an IO pin
 
-Have fun, and remember to experiment!
+The tutorial only supports a Linux host for compiling the tutorial code.
 
-## Tutorial links (online)
+## Quickstart
 
-[Step01 - Getting Started](http://www.valvers.com/open-software/raspberry-pi/step01-bare-metal-programming-in-cpt1/)
+```sh
+git clone git@github.com:BrianSidebotham/arm-tutorial-rpi.git
+cd arm-tutorial-rpi
+```
 
-[Step02 - C Runtime](http://www.valvers.com/open-software/raspberry-pi/step02-bare-metal-programming-in-c-pt2/)
+In order to use the tutorial-supplied compiler:
 
-[Step03 - Introducing CMake](http://www.valvers.com/open-software/raspberry-pi/step03-bare-metal-programming-in-c-pt3/)
+```sh
+compiler/get_compiler.sh
+```
 
-[Step04 - Interrupts](http://www.valvers.com/open-software/raspberry-pi/step04-bare-metal-programming-in-c-pt4/)
+Get the RPI Firmware that will be required for compiled SD Card images:
 
-[Step05 - Graphics(Basic)](http://www.valvers.com/open-software/raspberry-pi/step05-bare-metal-programming-in-c-pt5/)
+```sh
+firmware/get_firmware_repo.sh
+```
 
-## Some interesting links:
+> **NOTE**: This tutorial also used to be tested on Windows, but as I don't have any Windows
+installs available any more, or indeed the time available to test everything under Windows it's
+dropped off the list.
 
-Original Cambridge Tutorial that inspired this tutorial series:
-http://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/index.html
+_Get reading the tutorial. Have fun, and remember to experiment!_
 
-ARM Instruction Reference:
-http://infocenter.arm.com/help/topic/com.arm.doc.qrc0001l/QRC0001_UAL.pdf
+## Dependencies
 
-GNU ARM Embedded Toolchain:
-https://launchpad.net/gcc-arm-embedded
+The tutorial has a few dependencies which you might want to install before you get started:
 
-Newlib C-Library documentation:
-https://sourceware.org/newlib/libc.html
+- cmake (Used for configuring Makefiles)
+- mtools (Tools for dealing with file-based FAT32 systems)
+
+## Tutorial links (Github)
+
+[Step01 - Getting Started](/part-1/readme.md)
+
+[Step02 - C Runtime](/part-2/readme.md)
+
+[Step03 - Introducing CMake](/part-3/readme.md)
+
+[Step04 - Interrupts](/part-4/readme.md)
+
+[Step05 - Graphics(Basic)](/part-5/readme.md)
+
+## Interesting Links
+
+Original [Cambridge Tutorial](http://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/index.html) that
+inspired this tutorial series.
+
+[ARM Instruction Reference](http://infocenter.arm.com/help/topic/com.arm.doc.qrc0001l/QRC0001_UAL.pdf)
+
+[Circle C++ Bare Metal Environment for RPI](https://github.com/rsta2/circle)
+
+[Newlib C-Library documentation](https://sourceware.org/newlib/libc.html)
